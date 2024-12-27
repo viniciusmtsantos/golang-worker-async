@@ -12,7 +12,7 @@ services:
       - "50052:50052"
     command: /bin/sh -c "while sleep 1000; do :; done"
     networks:
-      - eucatur-network
+      - workspace-network
   
   redis:
     image: redis:latest
@@ -20,7 +20,7 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - eucatur-network
+      - workspace-network
     environment:
       - REDIS_HOST=localhost
       - REDIS_PORT=6379
@@ -28,5 +28,5 @@ services:
       - REDIS_PREFIX=dev-container_
 
 networks:
-  eucatur-network:
-    name: eucatur
+  workspace-network:
+    name: workspace
