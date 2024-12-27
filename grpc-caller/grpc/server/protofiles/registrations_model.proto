@@ -2,8 +2,7 @@ syntax = "proto3";
 
 package microservice.registrations.model;
 
-option go_package = "bitbucket.org/eucatur/microservice-registrations/grpc/pb";
-
+option go_package = "distributor/grpc/pb";
  
 message ResponseDefault {
 	string error   = 1;

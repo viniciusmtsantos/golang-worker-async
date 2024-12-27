@@ -3,7 +3,7 @@
 #
 
 # grpc
-./grpc-caller/server/pb
+/grpc-caller/grpc/server/pb
 
 # Binaries for programs and plugins
 *.exe

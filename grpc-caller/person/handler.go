@@ -12,7 +12,6 @@ type PersonGrpcHandlers struct {
 	pb.UnimplementedPersonRPCServer
 }
 
-// CreateRegistration — Solicitação de novo cadastro
 func (p *PersonGrpcHandlers) CreateFidelityRegister(ctx context.Context, in *pb.CreateFidelity) (*pb.ResponseDefault, error) {
 	ctx, cancel := context.WithTimeout(ctx, 30*time_go.Second)
 	defer cancel()

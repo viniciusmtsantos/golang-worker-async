@@ -3,12 +3,8 @@ syntax = "proto3";
 package microservice.registrations.registrations_person;
 
 import "registrations_model.proto";
-import "google/protobuf/timestamp.proto";
-import "registrations_address.proto";
-import "registrations_common.proto";
 
-option go_package = "bitbucket.org/eucatur/distributor/grpc/pb";
-
+option go_package = "distributor/grpc/pb";
 
 message CreateFidelity{
     string fidelity_token = 1;
