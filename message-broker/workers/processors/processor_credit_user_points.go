@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	fidelitylink "worker-demo/fidelity_link"
+	"worker-demo/taskflow"
 	"worker-demo/workers/distributor"
 
 	"github.com/hibiken/asynq"
@@ -38,28 +38,28 @@ func (processor *RedisTaskProcessorCreditUserPoints) ProcessTaskCreditUserPoints
 		return errLog
 	}
 
-	personIndicateID, err := fidelitylink.FindPersonIDByReferralID(payload.ReferralID)
+	personIndicateID, err := taskflow.FindPersonIDByReferralID(payload.ReferralID)
 	if err != nil {
 		errLog := fmt.Errorf("error: %s - %v", err.Error(), payload)
 		return errLog
 	}
 
-	externalID, err := fidelitylink.GetDocumentByUserID(personIndicateID)
+	externalID, err := taskflow.GetDocumentByUserID(personIndicateID)
 	if err != nil {
 		return err
 	}
 
-	points, err := fidelitylink.GetPointsByParameterName(fidelitylink.PointsParameterName)
+	points, err := taskflow.GetPointsByParameterName(taskflow.PointsParameterName)
 	if err != nil {
 		return err
 	}
 
-	err = fidelitylink.CreditPointsToReferrer(externalID, points)
+	err = taskflow.CreditPointsToReferrer(externalID, points)
 	if err != nil {
 		return err
 	}
 
-	err = fidelitylink.SetCreditedPointsByReferralID(payload.ReferralID, points)
+	err = taskflow.SetCreditedPointsByReferralID(payload.ReferralID, points)
 	if err != nil {
 		return err
 	}
