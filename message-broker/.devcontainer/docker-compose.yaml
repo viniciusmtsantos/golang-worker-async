@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  dev-container:
+    container_name: dev-container
+    volumes:
+      - ..:/workspace:cached  # This can be :delegated for Linux or :cached for macOS
+    build:
+      context: ./../
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - "50052:50052"
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    networks:
+      - workspace-network
+  
+  redis:
+    image: redis:latest
+    container_name: redis-container
+    ports:
+      - "6379:6379"
+    networks:
+      - workspace-network
+    environment:
+      - REDIS_HOST=localhost
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_PREFIX=dev-container_
+
+networks:
+  workspace-network:
+    name: workspace

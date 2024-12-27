@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package microservice.registrations.model;
+
+option go_package = "bitbucket.org/eucatur/microservice-registrations/grpc/pb";
+
+ 
+message ResponseDefault {
+	string error   = 1;
+	string message = 2;
+}
+
+ 
