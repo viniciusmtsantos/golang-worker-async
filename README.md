@@ -32,11 +32,13 @@ O fluxo de mensagens é o seguinte:
 
 O diagrama abaixo ilustra a estrutura de como os componentes interagem:
 
+```
  +------------+       +------------+        +------------+
  |  gRPC API  | <---> |  Redis Pub | <--->  |   Workers  |
  +------------+       +------------+        +------------+
        ^                     |
        |                     v
  Chama o fluxo       Processa mensagens
+```
 
 Neste diagrama, a **gRPC API** inicia o fluxo de mensagens, o **Redis Pub/Sub** distribui as mensagens para os **Workers**, que as processam conforme o necessário. O sistema é escalável e facilmente desacoplado.
