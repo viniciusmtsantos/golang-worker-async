@@ -15,9 +15,7 @@ type AppConfig struct {
 
 func SetupEnv() (cfg AppConfig, err error) {
 
-	if os.Getenv("APP_ENV") == "dev" {
-		godotenv.Load()
-	}
+	godotenv.Load()
 
 	redisAdr := os.Getenv("REDIS_ADR")
 	if len(redisAdr) < 1 {

@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gRPC",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "grpc-caller/cmd/main.go"
+        },
+        {
+            "name": "Worker",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "message-broker/cmd/main.go"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "gRPC/Worker",
+            "configurations": ["gRPC", "Worker"]
+        }
+    ]
+}

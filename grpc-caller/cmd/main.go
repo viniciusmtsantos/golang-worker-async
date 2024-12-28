@@ -2,9 +2,8 @@ package main
 
 import (
 	"context"
-	"distributor/grpc/logger"
-	grpc "distributor/grpc/server"
 	"flag"
+	"grpc-caller/grpc"
 	"log"
 	_ "net/http/pprof"
 )
@@ -29,11 +28,6 @@ func main() {
 
 	if len(cfg.GRPCPort) == 0 {
 		log.Fatalf("invalid tcp port for gRPC server: '%s'", cfg.GRPCPort)
-		return
-	}
-
-	if err := logger.Init(cfg.LogLevel, cfg.LogTimeFormat); err != nil {
-		log.Fatalf("failed to initialize logger: %v", err)
 		return
 	}
 

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package microservice.registrations.model;
 
-option go_package = "distributor/grpc/pb";
+option go_package = "grpc-caller/grpc/pb";
  
 message ResponseDefault {
 	string error   = 1;

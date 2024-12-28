@@ -1,5 +1,5 @@
-go-distributor:
-	@APP_ENV==dev go run distributor/cmd/main.go
+go-grpc:
+	@APP_ENV==dev go run grpc-caller/cmd/main.go
 	
 go-worker:
 	@APP_ENV==dev go run message-broker/cmd/main.go

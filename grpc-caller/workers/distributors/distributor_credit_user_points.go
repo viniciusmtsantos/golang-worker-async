@@ -2,9 +2,9 @@ package distributors
 
 import (
 	"context"
-	"distributor/config"
-	"distributor/workers/enums/process"
 	"encoding/json"
+	"grpc-caller/config"
+	"grpc-caller/workers/enums/process"
 
 	"github.com/hibiken/asynq"
 	log "github.com/sirupsen/logrus"

@@ -2,7 +2,7 @@ package person
 
 import (
 	"context"
-	"distributor/grpc/server/pb"
+	"grpc-caller/grpc/server/pb"
 	time_go "time"
 
 	"github.com/newrelic/go-agent/v3/newrelic"

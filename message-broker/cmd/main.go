@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"log"
+	"message-broker/config"
+	"message-broker/workers"
+	process "message-broker/workers/enums"
+	"message-broker/workers/processors"
 	"time"
-	"worker-demo/config"
-	"worker-demo/workers"
-	process "worker-demo/workers/enums"
-	"worker-demo/workers/processors"
 
 	redis_worker "github.com/redis/go-redis/v9"
 

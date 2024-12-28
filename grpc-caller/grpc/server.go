@@ -14,8 +14,8 @@ import (
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/reflection"
 
-	"distributor/grpc/server/pb"
-	"distributor/person"
+	"grpc-caller/grpc/server/pb"
+	"grpc-caller/person"
 )
 
 func StartGrpcServer(ctx context.Context, port *string) {
@@ -57,9 +57,7 @@ func StartGrpcServer(ctx context.Context, port *string) {
 		log.Fatalf("could not listen to %d: %v", port, err)
 	}
 
-	log.WithFields(log.Fields{
-		"gRPC Port": *port,
-	}).Info("Server is running")
+	log.WithFields(log.Fields{"gRPC Port": *port}).Info("Server is running")
 
 	reflection.Register(grpcServer)
 

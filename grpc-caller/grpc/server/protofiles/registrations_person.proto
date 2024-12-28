@@ -4,7 +4,7 @@ package microservice.registrations.registrations_person;
 
 import "registrations_model.proto";
 
-option go_package = "distributor/grpc/pb";
+option go_package = "grpc-caller/grpc/pb";
 
 message CreateFidelity{
     string fidelity_token = 1;

@@ -4,8 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"worker-demo/taskflow"
-	"worker-demo/workers/distributor"
+	"message-broker/taskflow"
+	"message-broker/workers/distributor"
 
 	"github.com/hibiken/asynq"
 	"github.com/rs/zerolog/log"

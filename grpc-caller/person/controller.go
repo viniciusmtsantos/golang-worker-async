@@ -2,8 +2,8 @@ package person
 
 import (
 	"context"
-	"distributor/workers/distributors"
 	"fmt"
+	"grpc-caller/workers/distributors"
 
 	"github.com/hibiken/asynq"
 )
