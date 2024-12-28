@@ -1,7 +1,6 @@
 package config
 
 import (
-	"errors"
 	"os"
 	"strconv"
 
@@ -15,18 +14,16 @@ type AppConfig struct {
 
 func SetupEnv() (cfg AppConfig, err error) {
 
-	if os.Getenv("APP_ENV") == "dev" {
-		godotenv.Load()
-	}
+	godotenv.Load()
 
 	redisAdr := os.Getenv("REDIS_ADR")
 	if len(redisAdr) < 1 {
-		return AppConfig{}, errors.New("env variable not found")
+		redisAdr = "localhost:6379"
 	}
 
 	redisDB, err := strconv.Atoi(os.Getenv("REDIS_DB"))
 	if err != nil {
-		return AppConfig{}, errors.New("env variable not found")
+		redisDB = 0
 	}
 
 	return AppConfig{RedisAdr: redisAdr, RedisDB: redisDB}, nil
