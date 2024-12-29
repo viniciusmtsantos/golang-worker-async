@@ -52,6 +52,7 @@ func (s *RedisTaskDistributorCreditUserPoints) DistributorCreditUserPoints(ctx c
 	log.WithFields(log.Fields{
 		"type":               task.Type(),
 		"payload":            string(task.Payload()),
+		"queue":              info.Queue,
 		"max_retry_possible": info.MaxRetry,
 	}).Info("enqueued task")
 
