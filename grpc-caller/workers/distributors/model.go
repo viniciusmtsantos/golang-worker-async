@@ -1,6 +1,6 @@
 package distributors
 
 type PayloadCreditUserPoints struct {
-	ReferralID     int64 `json:"referral_id"`
-	ReferrerUserID int64 `json:"referrer_user_id"`
+	IndicatorID int64 `json:"indicator_id"`
+	WantRetry   bool  `json:"want_retry"`
 }

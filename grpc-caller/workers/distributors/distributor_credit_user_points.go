@@ -43,16 +43,17 @@ func (s *RedisTaskDistributorCreditUserPoints) DistributorCreditUserPoints(ctx c
 	}
 
 	task := asynq.NewTask(process.ProcessCreditUserPoints.TaskName, jsonPayload, asynq.Queue(process.ProcessCreditUserPoints.QueueName))
+
 	info, err := s.client.EnqueueContext(ctx, task)
 	if err != nil {
 		return err
 	}
 
 	log.WithFields(log.Fields{
-		"type":      task.Type(),
-		"payload":   task.Payload(),
-		"queue":     info.Queue,
-		"max_retry": info.MaxRetry,
+		"type":               task.Type(),
+		"payload":            string(task.Payload()),
+		"max_retry_possible": info.MaxRetry,
 	}).Info("enqueued task")
+
 	return nil
 }

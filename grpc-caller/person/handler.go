@@ -3,9 +3,7 @@ package person
 import (
 	"context"
 	"grpc-caller/grpc/server/pb"
-	time_go "time"
-
-	"github.com/newrelic/go-agent/v3/newrelic"
+	"time"
 )
 
 type PersonGrpcHandlers struct {
@@ -13,17 +11,18 @@ type PersonGrpcHandlers struct {
 }
 
 func (p *PersonGrpcHandlers) CreateFidelityRegister(ctx context.Context, in *pb.CreateFidelity) (*pb.ResponseDefault, error) {
-	ctx, cancel := context.WithTimeout(ctx, 30*time_go.Second)
+	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
-
-	defer newrelic.FromContext(ctx).StartSegment("Handler > CreateFidelityRegister").End()
 
 	response := &pb.ResponseDefault{}
 
-	if err := CreateFidelityRegister(ctx, in.FidelityToken); err != nil {
+	err := CreateFidelityRegister(ctx, in)
+	if err != nil {
 		response.Error = err.Error()
 		return response, err
 	}
+
+	response.Message = "Process follows workflow normally..."
 
 	return response, nil
 }

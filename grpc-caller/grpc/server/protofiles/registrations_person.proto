@@ -6,8 +6,9 @@ import "registrations_model.proto";
 
 option go_package = "grpc-caller/grpc/pb";
 
-message CreateFidelity{
-    string fidelity_token = 1;
+message CreateFidelity {
+    int64 indicator_id = 1;
+    bool want_retry = 2;
 }
 
 service PersonRPC{

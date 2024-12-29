@@ -40,7 +40,7 @@ func StartWorkers(cfg config.AppConfig) error {
 		asynq.Config{
 			Concurrency:     15,
 			ShutdownTimeout: 30 * time.Minute,
-			Queues:          map[string]int{process.ProcessCreditUserPoints.QueueName: 1},
+			Queues:          map[string]int{process.ProcessCreditUserPoints.QueueName: 3},
 			ErrorHandler: asynq.ErrorHandlerFunc(
 				func(ctx context.Context, task *asynq.Task, err error) {
 					logZero.Error().Err(err).Str("type", task.Type()).Bytes("payload", task.Payload()).Msg("create server failed")
